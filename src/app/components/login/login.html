@@ -1,0 +1,45 @@
+<div class="container-fluid p-0">
+<div class="row vh-100">
+        <div class="col-md-7 left-login text-center p-4">
+            <h1 class="mt-5">Expense Tracker</h1>
+            <p class="mt-4">
+                Expense tracker helps you take control of your finances by logging and organizing daily expenses. Visual
+                tools such as charts, graphs, and detailed summaries to help better analyze spending patterns, spot
+                trends, and establish budgets.
+            </p>
+            <hr>
+            <p>Start tracking your expenses today.</p>
+            <!-- <button matButton="outlined">Get Start</button> -->
+            <a routerLink="/signup" matButton="outlined">Get Start</a>
+        </div>
+        <div class="col-md-5 right-login p-4">
+            <form action="" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <h2 class="mt-4">Login</h2>
+            <mat-form-field class="mt-3" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput
+             formControlName="email"
+            placeholder="Enter Your Email"
+             type="email"
+              >
+            <mat-icon matPrefix>mail</mat-icon> 
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')"> Please enter valid email.</mat-error>
+            </mat-form-field>
+                    <mat-form-field class="mt-3" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput
+             formControlName="password"
+              placeholder="Enter Your Password"
+               type="password"
+                >
+            <mat-icon matPrefix>lock</mat-icon> 
+              <mat-error *ngIf="loginForm.get('password')?.hasError('required')"> Please enter valid password.</mat-error>
+   
+        </mat-form-field>
+        <button class="w-100 mt-3" [disabled]="loginForm.invalid" matButton="filled" type="submit">login</button>
+   <p class="mt-3">New to expense tracker ? <a matButton routerLink="/signup">Signup</a>  </p>      
+<p class="text-danger">{{message}}</p>    
+</form>
+        </div>
+    </div>
+</div>

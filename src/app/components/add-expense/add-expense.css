@@ -1,0 +1,20 @@
+
+nav{
+    position: relative;
+}
+
+mat-card
+{
+     /* background-color: #ffffff; */
+    /* padding-top: 60px; */
+    /* border: 1px solid black; */
+}
+.fixed-bottom-right {
+    /* top: 20px;    
+    right: 50px;      */
+ 
+    /* z-index: 1000; */
+}
+.closebtn{
+      font-size: 31px;
+}

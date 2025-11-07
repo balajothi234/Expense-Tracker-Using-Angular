@@ -1,0 +1,80 @@
+mat-sidenav-content{
+    padding-top: 62px;
+    padding-right: 15px;
+    padding-left: 15px;
+padding-bottom: 15px;
+ height: 100vh;
+}
+mat-sidenav{
+    width: 190px;
+    padding-top: 68px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: #e7eaf6;
+  
+}
+
+body{
+      background-color: rgb(209, 205, 205);
+
+}
+
+.menubtn{
+    color:#005bcc;
+}
+.navbar{
+    background-color: #e7eaf6;
+}
+nav{
+    position: absolute;
+}
+.profile{
+    border: 1px solid black;
+    padding: 6px 10px;
+    border-radius: 15px;
+}
+mat-sidenav-content{
+    background-color: #c8c4c4;
+}
+
+.example-events {
+  width: 300px;
+  height: 200px;
+  overflow: auto;
+  border: 1px solid #555;
+}
+.social-icons{
+    font-size: 20px;
+    padding-left: 14px;
+        color:#005bcc;
+
+}
+.fixed-bottom-right {
+    position: fixed; 
+    bottom: 20px;    
+    right: 20px;     
+     padding:28px 20px;
+    z-index: 1000;
+}
+.table{
+    border-radius: 10px;
+    padding: 10px;
+}
+mat-card,table{ 
+    background-color: #ffffff;
+}
+.card-one i,mat-card-content,mat-card-footer{
+font-size: 40px;
+}
+.count{
+    /* border: 2px solid black; */
+    
+
+}
+.fixed-bottom-right {
+    position: fixed; 
+    bottom: 20px;    
+    right: 20px;     
+     padding:28px 20px;
+    z-index: 1000;
+}

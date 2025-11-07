@@ -1,0 +1,9 @@
+.right-login{
+    /* max-width: 600px; */
+    /* border: 1px solid black; */
+}
+.left-login{
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: rgb(184, 222, 237)
+}

@@ -1,0 +1,46 @@
+<div class="container-fluid p-0">
+    <div class="row vh-100">
+        <div class="col-md-7 left-login text-center p-4">
+            <h1 class="mt-5">Expense Tracker</h1>
+            <p class="mt-4">
+                Expense tracker helps you take control of your finances by logging and organizing daily expenses. Visual
+                tools such as charts, graphs, and detailed summaries to help better analyze spending patterns, spot
+                trends, and establish budgets.
+            </p>
+            <hr>
+            <p>Start tracking your expenses today.</p>
+            <!-- <button matButton="outlined">Login</button> -->
+            <a routerLink="/login" matButton="outlined">login</a>
+        </div>
+        <div class="col-md-5 right-login p-4">
+            <form action="" [formGroup]="signupForm" (ngSubmit)="onSignup()">
+            <h2 class="mt-4">Signup</h2>
+               <mat-form-field class="mt-3" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="username" placeholder="Enter Your Name" type="text" name="" id="">
+            <mat-icon matPrefix>person</mat-icon> 
+          <mat-error *ngIf="signupForm.get('username')?.hasError('required')"> Please enter valid name.</mat-error>
+   
+        </mat-form-field>
+   <mat-form-field class="mt-3" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Enter Your Email" type="email" name="" id="">
+            <mat-icon matPrefix>mail</mat-icon> 
+          <mat-error *ngIf="signupForm.get('email')?.hasError('required')"> Please enter valid email.</mat-error>
+   
+        </mat-form-field>
+                    <mat-form-field class="mt-3" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" placeholder="Enter Your Password" type="password" name="" id="">
+            <mat-icon matPrefix>lock</mat-icon> 
+              <mat-error *ngIf="signupForm.get('password')?.hasError('required')"> Please enter valid password.</mat-error>
+   
+        </mat-form-field>
+
+
+        <button class="w-100 mt-3" [disabled]="signupForm.invalid" matButton="filled" type="submit">Signup</button>
+   <p class="mt-3">already signup ? <a matButton routerLink="/login">Login</a>  </p>      
+    </form>
+        </div>
+    </div>
+</div>
