@@ -66,15 +66,19 @@ mat-card,table{
 .card-one i,mat-card-content,mat-card-footer{
 font-size: 40px;
 }
-.count{
-    /* border: 2px solid black; */
-    
 
-}
 .fixed-bottom-right {
     position: fixed; 
     bottom: 20px;    
     right: 20px;     
      padding:28px 20px;
     z-index: 1000;
+}
+.noOfExpense{
+
+}
+@media (max-width:767px) {
+    .noOfExpense {
+        margin-top: 15px;
+    }
 }

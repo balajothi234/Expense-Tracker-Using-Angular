@@ -1,1 +1,67 @@
-<h2>settings work</h2>
+      <div>  <mat-card class="mt-4 cardclass">
+           <h6 class="mt-2 ms-2">Manage Category</h6>
+<mat-form-field class="example-form-field">
+    <mat-label>Category</mat-label>
+    <mat-chip-grid #reactiveChipGrid aria-label="Enter reactive form keywords" [formControl]="formControl">
+    @for (keyword of reactiveKeywords(); track keyword) {
+      <mat-chip-row (removed)="removeReactiveKeyword(keyword)">
+        {{keyword}}
+      <button matChipRemove [attr.aria-label]="'remove reactive form' + keyword">
+        <mat-icon>cancel</mat-icon>
+      </button>
+      </mat-chip-row>
+    }
+    </mat-chip-grid>
+    <input
+      placeholder="Add new category..."
+      [matChipInputFor]="reactiveChipGrid"
+      (matChipInputTokenEnd)="addReactiveKeyword($event)"
+    />
+  </mat-form-field>
+</mat-card></div>
+
+<!-- <div>
+        <mat-card class="mt-4 cardclass">
+           <h6 class="mt-2 ms-2">Manage Category</h6>
+<mat-form-field class="example-form-field">
+    <mat-label>Category</mat-label>
+    <mat-chip-grid #reactiveChipGrid aria-label="Enter reactive form keywords" [formControl]="formControl">
+    @for (keyword of reactiveKeywords(); track keyword) {
+      <mat-chip-row (removed)="removeReactiveKeyword(keyword)">
+        {{keyword}}
+      <button matChipRemove [attr.aria-label]="'remove reactive form' + keyword">
+        <mat-icon>cancel</mat-icon>
+      </button>
+      </mat-chip-row>
+    }
+    </mat-chip-grid>
+    <input
+      placeholder="Add new category..."
+      [matChipInputFor]="reactiveChipGrid"
+      (matChipInputTokenEnd)="addReactiveKeyword($event)"
+    />
+  </mat-form-field>
+</mat-card></div> -->
+
+ <!-- <mat-card class="mt-4 cardclass">
+ <h6 class="mt-2 ms-2">Manage Payment Type</h6>
+<mat-form-field class="example-forms-field">
+    <mat-label>payment type</mat-label>
+    <mat-chip-grid #reactiveChipGrid aria-label="Enter reactive form keywords" [formControl]="formControl">
+    @for (keyword of reactiveKeywords(); track keyword) {
+      <mat-chip-row (removed)="removeReactiveKeyword(keyword)">
+        {{keyword}}
+      <button matChipRemove [attr.aria-label]="'remove reactive form' + keyword">
+        <mat-icon>cancel</mat-icon>
+      </button>
+      </mat-chip-row>
+    }
+    </mat-chip-grid>
+    <input
+      placeholder="Add new payment type..."
+      [matChipInputFor]="reactiveChipGrid"
+      (matChipInputTokenEnd)="addReactiveKeyword($event)"
+    />
+  </mat-form-field>
+</mat-card> -->
+

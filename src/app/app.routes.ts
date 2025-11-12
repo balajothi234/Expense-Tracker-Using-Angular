@@ -7,6 +7,7 @@ import { Settings } from './components/settings/settings';
 
 // 👉 Add a new "DashboardHome" component (your current dashboard content)
 import { DashboardHome } from './components/dashboard-home/dashboard-home';
+import { Import } from './components/import/import';
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: Login },
@@ -17,7 +18,9 @@ export const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: DashboardHome }, 
       { path: 'settings', component: Settings },   
-     { path: 'add-expense', component: AddExpense }
+     { path: 'add-expense', component: AddExpense },
+     {path:'import',component:Import}
+     
     ],
   },
 

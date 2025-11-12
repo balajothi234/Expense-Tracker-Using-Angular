@@ -1,0 +1,14 @@
+<div class="text-center">
+ <mat-button-toggle-group>
+    <mat-button-toggle (click)="changeType('pie')">Pie</mat-button-toggle>
+    <mat-button-toggle  (click)="changeType('bar')">Bar</mat-button-toggle>
+    <mat-button-toggle  (click)="changeType('doughnut')">Doughnut</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+<div style="display: block; width: 400px; margin: auto;">
+  <canvas baseChart
+    [data]="pieChartData"
+    [options]="pieChartOptions"
+     [type]="chartType">
+  </canvas>
+</div>

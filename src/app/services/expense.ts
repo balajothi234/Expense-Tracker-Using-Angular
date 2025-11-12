@@ -1,8 +1,13 @@
+
+
+
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
 export interface Expense{
-  id:string;
+    id:string;
     expenseName:string;
-  amount:string;
+    amount:string;
     date:string;
     category:string;
     paymentSource:string;
@@ -13,25 +18,45 @@ export interface Expense{
   providedIn: 'root',
 })
 export class Expense {
-  private expense: Expense[] = [];
-  private key='expenses';
+  private key = 'expenses';
+  private _expenses$ = new BehaviorSubject<Expense[]>(this.getAllExpense());
+  public expenses$ = this._expenses$.asObservable();
 
-  getAllExpense():Expense[]{
-    return JSON.parse(localStorage.getItem(this.key)||'[]')
+  //getting expense from localstorage
+  getAllExpense(): Expense[] {
+    return JSON.parse(localStorage.getItem(this.key) || '[]');
   }
-  addExpense(expense:Expense){
-    const expenses=this.getAllExpense();
+
+  // add new expense
+  addExpense(expense: Expense) {
+    const expenses = this.getAllExpense();
     expenses.push(expense);
-    localStorage.setItem(this.key,JSON.stringify(expenses))
+    localStorage.setItem(this.key, JSON.stringify(expenses));
+    this._expenses$.next(expenses);
   }
-    clearExpenses() {
+
+  // Delete expense
+  deleteExpense(id: string) {
+    const expenses = this.getAllExpense().filter((e) => e.id !== id);
+    localStorage.setItem(this.key, JSON.stringify(expenses));
+    this._expenses$.next(expenses); // notify subscribers
+  }
+
+  // Update expense
+  updateExpense(updated: Expense) {
+    const expenses = this.getAllExpense().map((exp) =>
+      exp.id === updated.id ? updated : exp
+    );
+    localStorage.setItem(this.key, JSON.stringify(expenses));
+    this._expenses$.next(expenses); 
+  }
+
+  // Clear all
+  clearExpenses() {
     localStorage.removeItem(this.key);
+    this._expenses$.next([]); 
   }
-    getTotal(amount:any) {
-    return this.expense
-      .filter(a => a.amount === amount)
-      .reduce((sum:any, a) => sum + a.amount, 0);
-  }
+
 
   }
   

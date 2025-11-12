@@ -22,12 +22,15 @@ import { DashboardHome } from '../dashboard-home/dashboard-home';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { CategoryChart } from '../../charts/category-chart/category-chart';
 @Component({
   selector: 'app-dashboard',
-  imports: [MatIcon, MatSidenav, MatTableModule, MatPaginator, MatPaginatorModule,DashboardHome,
-    FormsModule, MatMenuModule, Settings, AddExpense, MatCardModule, RouterLink,
+  imports: [
+    MatIcon, MatSidenav, MatTableModule, MatPaginator, MatPaginatorModule,DashboardHome,
+    FormsModule, MatMenuModule, Settings, AddExpense, MatCardModule, RouterLink,CategoryChart,
     MatIconButton, MatSidenavModule, MatNavList, MatCheckboxModule, CommonModule,
-    MatButtonModule, MatSidenavContainer, MatSidenavContent, MatToolbarModule, RouterOutlet],
+    MatButtonModule, MatSidenavContainer, MatSidenavContent, MatToolbarModule, RouterOutlet
+  ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })

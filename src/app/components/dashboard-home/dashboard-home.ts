@@ -16,13 +16,22 @@ import { AddExpense } from '../add-expense/add-expense';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Auth } from '../../services/auth';
 import { Expense } from '../../services/expense';
+import { RouterOutlet } from '@angular/router';
+import * as Highcharts from 'highcharts';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CategoryChart } from '../../charts/category-chart/category-chart';
+import { PaymenttypeChart } from '../../charts/paymenttype-chart/paymenttype-chart';
 
 @Component({
   selector: 'app-dashboard-home',
-    imports: [MatIcon, MatSidenav,MatTableModule,MatPaginator,MatPaginatorModule,
-        FormsModule,MatMenuModule,Settings,AddExpense,MatCardModule,RouterLink,
-    MatIconButton, MatSidenavModule, MatNavList, MatCheckboxModule,CommonModule,
-    MatButtonModule, MatSidenavContainer, MatSidenavContent, MatToolbarModule],
+    imports: [MatIcon, MatTableModule,MatPaginator,MatPaginatorModule,CategoryChart,
+        FormsModule,MatMenuModule,MatCardModule,RouterLink,PaymenttypeChart,
+          MatIcon, MatSidenav, MatTableModule, MatPaginator, MatPaginatorModule,DashboardHome,
+    FormsModule, MatMenuModule, Settings, AddExpense, MatCardModule, RouterLink,
+    MatIconButton, MatSidenavModule, MatNavList, MatCheckboxModule, CommonModule,
+    MatButtonModule, MatSidenavContainer, MatSidenavContent, MatToolbarModule,RouterOutlet,
+     MatSidenavModule, MatCheckboxModule,CommonModule,
+    MatButtonModule, MatToolbarModule],
   templateUrl: './dashboard-home.html',
   styleUrl: './dashboard-home.css',
 })
@@ -34,7 +43,7 @@ export class DashboardHome implements OnInit{
   users:any;  
   totalExpense = 0;
   totalCount=0;
-  constructor(private auth:Auth,private expenseService:Expense,private router:Router){
+  constructor(private auth:Auth,private expenseService:Expense,private snackBar:MatSnackBar,private router:Router){
     this.user = this.auth.getLoggedInUser();
     this.users=this.auth.getAllUsers();
   }
@@ -53,21 +62,48 @@ export class DashboardHome implements OnInit{
     this.router.navigate(['/login']);
   }
   displayedColumns: string[] = [
-  'position',
+  // 'position',
   'name',
   'amount',
   'date',
   'category',
   'paymentSource',
-  'comments'
+  'comments',
+  'actions'
 ];
 expensestable = []
  loadExpenses() {
     this.expenses = this.expenseService.getAllExpense();
     this.calculateTotal(); 
+    
   }
 calculateTotal() {
     this.totalExpense = this.expenses.reduce((sum, exp) => sum + Number(exp.amount || 0), 0);
      this.totalCount = this.expenses.length;
+  }
+deleteExpense(id: string) {
+  if (confirm('Are you sure you want to delete this expense?')) {
+    this.expenseService.deleteExpense(id);
+    this.loadExpenses(); 
+  }
+}
+// const newExpense = {
+//   id: Date.now().toString(),
+//   ...this.expenseForm.value
+// };
+// this.expenseService.addExpense(newExpense);
+
+editExpense(expense: Expense) {
+  this.router.navigate(['/dashboard/add-expense'], { state: { expense } });
+}
+
+    // Snackbar
+  showSnackBar(message: string, type: 'success' | 'error' | 'warning') {
+    this.snackBar.open(message, '', {
+      duration: 1500,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+      panelClass: [`${type}-snackbar`],
+    });
   }
 }
