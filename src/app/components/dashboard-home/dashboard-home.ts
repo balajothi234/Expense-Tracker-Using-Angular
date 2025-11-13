@@ -7,17 +7,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSidenav, MatSidenavContainer, MatSidenavContent, MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { Router, RouterLink } from '@angular/router';
-import { Settings } from '../settings/settings';
-import { MatNavList } from '@angular/material/list';
-import { AddExpense } from '../add-expense/add-expense';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Auth } from '../../services/auth';
 import { Expense } from '../../services/expense';
-import { RouterOutlet } from '@angular/router';
-import * as Highcharts from 'highcharts';
+// import * as Highcharts from 'highcharts';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryChart } from '../../charts/category-chart/category-chart';
 import { PaymenttypeChart } from '../../charts/paymenttype-chart/paymenttype-chart';
@@ -26,10 +22,10 @@ import { PaymenttypeChart } from '../../charts/paymenttype-chart/paymenttype-cha
   selector: 'app-dashboard-home',
     imports: [MatIcon, MatTableModule,MatPaginator,MatPaginatorModule,CategoryChart,
         FormsModule,MatMenuModule,MatCardModule,RouterLink,PaymenttypeChart,
-          MatIcon, MatSidenav, MatTableModule, MatPaginator, MatPaginatorModule,DashboardHome,
-    FormsModule, MatMenuModule, Settings, AddExpense, MatCardModule, RouterLink,
-    MatIconButton, MatSidenavModule, MatNavList, MatCheckboxModule, CommonModule,
-    MatButtonModule, MatSidenavContainer, MatSidenavContent, MatToolbarModule,RouterOutlet,
+          MatIcon, MatTableModule, MatPaginator, MatPaginatorModule,
+    FormsModule, MatMenuModule, MatCardModule, RouterLink,
+    MatIconButton, MatSidenavModule, MatCheckboxModule, CommonModule,
+    MatButtonModule, MatToolbarModule,
      MatSidenavModule, MatCheckboxModule,CommonModule,
     MatButtonModule, MatToolbarModule],
   templateUrl: './dashboard-home.html',

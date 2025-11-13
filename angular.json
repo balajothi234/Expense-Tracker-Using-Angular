@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+             "outputPath": "dist/expense-tracker",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -36,11 +37,12 @@
           },
           "configurations": {
             "production": {
-              "budgets": [
+              "baseHref": "/Expense-Tracker-Using-Angular/",
+               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "3MB",
+                  "maximumError": "5MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -91,6 +93,9 @@
               "src/styles.css"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

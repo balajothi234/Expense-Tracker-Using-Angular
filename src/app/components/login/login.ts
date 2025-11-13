@@ -22,7 +22,14 @@ loginForm:any;
 constructor(private fb:FormBuilder,private auth:Auth,private router:Router){
 this.loginForm=this.fb.group({
   email:['',[Validators.required,Validators.email]],
-  password:['',Validators.required]
+password: [
+  '',
+  [
+    Validators.required,
+    Validators.minLength(6),
+    Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{6,}$/)
+  ]
+],
 })
 }
 onLogin(){

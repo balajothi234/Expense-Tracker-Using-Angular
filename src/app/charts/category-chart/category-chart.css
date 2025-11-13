@@ -1,0 +1,11 @@
+@media (max-width: 768px) {
+  .categorychart {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .categorychart {
+    max-width: 250px;
+  }
+}

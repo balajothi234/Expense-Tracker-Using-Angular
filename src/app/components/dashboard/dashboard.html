@@ -1,48 +1,54 @@
 <nav class="navbar navbar-expand-lg fixed-top border">
-  <div class="container-fluid">
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <button class="menubtn" matIconButton="text" (click)="sidenav.toggle()">
-        <mat-icon class="mb-1" matButton="text">menu</mat-icon>
-      </button>
-      <h5 class="mt-2">Expense Tracker</h5>
-    </div>
+  <div class="container-fluid d-flex justify-content-between align-items-center">
+    <!-- Left: Menu button + title -->
     <div class="d-flex align-items-center">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <button matButton="outlined" [matMenuTriggerFor]="belowMenu">
-            <mat-icon>account_circle</mat-icon>{{user?.username}}
-          </button>
-          <mat-menu #belowMenu="matMenu" yPosition="below">
-            <button mat-menu-item><mat-icon>settings_b_roll</mat-icon> View Profile</button>
-            <button routerLink="/login" mat-menu-item><mat-icon>logout</mat-icon> Logout</button>
-          </mat-menu>
-        </li>
-      </ul>
+      <button mat-icon-button class="menubtn" (click)="sidenav.toggle()">
+        <mat-icon class="mb-5">menu</mat-icon>
+      </button>
+      <h5 class="mt-1">Expense Tracker</h5>
+    </div>
+
+    <!-- Right: User menu -->
+    <div class="d-flex align-items-center">
+      <button mat-button [matMenuTriggerFor]="belowMenu" class="d-flex profile align-items-center">
+        <mat-icon>account_circle</mat-icon>
+        <span class="ms-1">{{ user?.username }}</span>
+      </button>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon> View Profile
+        </button>
+        <button routerLink="/login" mat-menu-item>
+          <mat-icon>logout</mat-icon> Logout
+        </button>
+      </mat-menu>
     </div>
   </div>
 </nav>
-<mat-sidenav-container class="example-container">
-  <mat-sidenav class="border" #sidenav mode="side" opened="true" [(opened)]="opened" (opened)="events.push('open!')"
-    (closed)="events.push('close!')">
 
-    <button class="w-100" routerLink="/dashboard" matButton="filled"><mat-icon>dashboard</mat-icon>Dashboard</button>
-    <a class="w-100 mt-2" routerLink="/dashboard/settings" matButton="text"><mat-icon>settings</mat-icon>Settings</a>
-    <a class="w-100 mt-2" routerLink="/dashboard/import" matButton="text"><mat-icon>upload file</mat-icon>Import</a>
+<!-- Side Navigation -->
+<mat-sidenav-container class="example-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" class="border">
+    <button class="w-100" routerLink="/dashboard" mat-flat-button color="primary">
+      <mat-icon>dashboard</mat-icon> Dashboard
+    </button>
+    <button class="w-100 mt-2" routerLink="/dashboard/settings" mat-button>
+      <mat-icon>settings</mat-icon> Settings
+    </button>
+    <button class="w-100 mt-2" routerLink="/dashboard/import" mat-button>
+      <mat-icon>upload_file</mat-icon> Import
+    </button>
+
     <div class="position-fixed icons-container bottom-0 ms-3 p-3">
       <i class="bi bi-linkedin social-icons"></i>
-      <a href="https://github.com/balajothi234/"  target="_blank" 
-   rel="noopener noreferrer">
+      <a href="https://github.com/balajothi234/" target="_blank" rel="noopener noreferrer">
         <i class="bi bi-github social-icons"></i>
       </a>
       <i class="bi bi-instagram social-icons"></i>
     </div>
   </mat-sidenav>
+
   <mat-sidenav-content>
-<!-- ......... -->
-   <router-outlet></router-outlet>
-
-    <!-- <app-add-expense></app-add-expense> -->
-
-
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -74,9 +74,7 @@ font-size: 40px;
      padding:28px 20px;
     z-index: 1000;
 }
-.noOfExpense{
 
-}
 @media (max-width:767px) {
     .noOfExpense {
         margin-top: 15px;
